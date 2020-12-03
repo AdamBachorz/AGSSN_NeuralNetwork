@@ -1,0 +1,10 @@
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\bin\Debug\ConsoleApp.exe
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\bin\Debug\ConsoleApp.pdb
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\bin\Debug\Model.dll
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\bin\Debug\Model.pdb
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\obj\Debug\ConsoleApp.csprojAssemblyReference.cache
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\obj\Debug\ConsoleApp.csproj.CoreCompileInputs.cache
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\obj\Debug\ConsoleApp.csproj.CopyComplete
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\obj\Debug\ConsoleApp.exe
+F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\ConsoleApp\obj\Debug\ConsoleApp.pdb
