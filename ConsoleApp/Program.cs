@@ -48,14 +48,14 @@ namespace ConsoleApp
                 }
             };
 
-            var wta = new WTA()
+            var network = new WTA()
             {
                 Neurons = neurons,
                 LearningPerformance = 0.5f,
                 Iterations = 4
             };
 
-            wta.Run();
+            network.Run();
 
             Console.ReadKey();
         }

@@ -10,6 +10,7 @@ namespace Model.NeuralNetwork.Elements
     public class Neuron
     {
         public int Id { get; set; }
+        public int Layer { get; set; }
         public IEnumerable<LearningVector> LearningVectors { get; set; }
         public double EuclideanDistance { get; private set; } // Miara Euklidesa - miara podobieństwa
 
