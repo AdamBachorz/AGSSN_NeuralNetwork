@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork.Elements
 {
-    public class LearningVector : Input
+    public class LearningVector : Input<double>
     {
-        public double Weight { get; set; }
+        public override double ResultValue() => Value;
 
         public override string ToString()
         {

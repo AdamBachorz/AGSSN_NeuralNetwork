@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork
 {
-    public class CPN : BaseNeuralNetwork
+    public class CPN<V> : BaseNeuralNetwork<V>
     {
         public CPN()
         {

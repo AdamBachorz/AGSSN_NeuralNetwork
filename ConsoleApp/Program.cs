@@ -11,12 +11,13 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var neurons = new List<Neuron>
+            var neurons = new List<Neuron<double>>
             {
-                new Neuron
+                new Neuron<double>
                 {
                     Id = 1,
-                    LearningVectors = new List<LearningVector>
+                    Layer = 1,
+                    Inputs = new List<LearningVector>
                     {
                         new LearningVector { Value = 0.4f, Weight = 0.2f },
                         new LearningVector { Value = 0.3f, Weight = 0.8f },
@@ -24,10 +25,11 @@ namespace ConsoleApp
                         new LearningVector { Value = 0.7f, Weight = 0.1f }
                     }
                 },
-                new Neuron
+                new Neuron<double>
                 {
                     Id = 2,
-                    LearningVectors = new List<LearningVector>
+                    Layer = 1,
+                    Inputs = new List<LearningVector>
                     {
                         new LearningVector { Value = 0.8f, Weight = 0.4f },
                         new LearningVector { Value = 0.8f, Weight = 0.4f },
@@ -35,10 +37,11 @@ namespace ConsoleApp
                         new LearningVector { Value = 0.1f, Weight = 0.8f }
                     }
                 },
-                new Neuron
+                new Neuron<double>
                 {
                     Id = 3,
-                    LearningVectors = new List<LearningVector>
+                    Layer = 1,
+                    Inputs = new List<LearningVector>
                     {
                         new LearningVector { Value = 0.2f, Weight = 0.8f },
                         new LearningVector { Value = 0.5f, Weight = 0.8f },
@@ -48,7 +51,7 @@ namespace ConsoleApp
                 }
             };
 
-            var network = new WTA()
+            var network = new WTA<double>()
             {
                 Neurons = neurons,
                 LearningPerformance = 0.5f,

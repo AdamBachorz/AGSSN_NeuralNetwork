@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork.Elements
 {
-    public class Neuron
+    public class Neuron<V>
     {
         public int Id { get; set; }
-        public int Layer { get; set; }
-        public IEnumerable<LearningVector> LearningVectors { get; set; }
+        public int Layer { get; set; } = 1;
+        public IEnumerable<Input<V>> Inputs { get; set; }
         public double EuclideanDistance { get; private set; } // Miara Euklidesa - miara podobieństwa
 
         public double? ExpectedValue { get; set; }
@@ -19,26 +19,16 @@ namespace Model.NeuralNetwork.Elements
         public double CalculateEuclideanDistance(double conscienceValue = 0)
         {
             double result = 0;
-            foreach (var learningVector in LearningVectors)
+            foreach (var input in Inputs)
             {
-                result += Math.Pow(learningVector.Value - learningVector.Weight, 2);
+                result += Math.Pow(input.ResultValue() - input.Weight, 2);
             }
 
             EuclideanDistance = Math.Sqrt(result) + conscienceValue;
             return EuclideanDistance;
         }
-        
-        public double OuterValue {
-            get
-            {
-                double result = 0;
-                foreach (var learningVector in LearningVectors)
-                {
-                    result += learningVector.Value * learningVector.Weight;
-                }
-                return result;
-            }
-        }
+
+        public virtual double OuterValue => Inputs.Sum(i => i.OuterValue);
 
         public double ErrorValue 
             => ExpectedValue.HasValue ? 0.5 * Math.Pow(OuterValue - ExpectedValue.Value, 2) : 0;
@@ -51,7 +41,7 @@ namespace Model.NeuralNetwork.Elements
 
             sb.AppendLine("Wejścia:");
             int inputCounter = 0;
-            foreach (var input in LearningVectors)
+            foreach (var input in Inputs)
             {
                 sb.AppendLine($"{++inputCounter}. {input.ToString()}");
             }

@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork.Elements
 {
-    public class WTA : BaseNeuralNetwork
+    public class WTA<V> : BaseNeuralNetwork<V>
     {
+        public IDictionary<Neuron<V>, int> ScoreBoard { get; private set; }
         public double ConscienceChance { get; set; } = 1;
 
         private int _currentIteration;
 
         public WTA()
         {
-            ScoreBoard = new Dictionary<Neuron, int>();
+            ScoreBoard = new Dictionary<Neuron<V>, int>();
         }
 
         public override void Run()
@@ -43,7 +44,7 @@ namespace Model.NeuralNetwork.Elements
                 Console.WriteLine($"Iteracja nr {_currentIteration}");
 
                 CalculateAndDisplayEuclideanDistances();
-                Neuron winnerNeuron = WinnerNeuron();
+                var winnerNeuron = WinnerNeuron();
                 Console.WriteLine("Wygrał neuron nr " + winnerNeuron.Id);
                 ScoreBoard[winnerNeuron]++;
                 UpdateWeights();
@@ -51,7 +52,7 @@ namespace Model.NeuralNetwork.Elements
             DisplayScoreBoard();
         }
 
-        private Neuron WinnerNeuron()
+        private Neuron<V> WinnerNeuron()
         {
             var minimumNeuronsEuclideanDistance = Neurons.Select(n => n.EuclideanDistance).Min();
             var winnerNeuron = Neurons.First(n => n.EuclideanDistance == minimumNeuronsEuclideanDistance);
@@ -77,9 +78,9 @@ namespace Model.NeuralNetwork.Elements
         {
             foreach (var neuron in Neurons)
             {
-                foreach (var input in neuron.LearningVectors)
+                foreach (var input in neuron.Inputs)
                 {
-                    input.Weight += LearningPerformance * (input.Value - input.Weight);
+                    input.Weight += LearningPerformance * (input.ResultValue() - input.Weight);
                 }
             }
         }
@@ -92,24 +93,23 @@ namespace Model.NeuralNetwork.Elements
             }
         }
 
-        private double ConscienceValue(Neuron neuron)
+        private double ConscienceValue(Neuron<V> neuron)
         {
             var hitConscience = Codes.Random.NextDouble() <= ConscienceChance;
             var lead = PickLead();
 
             // Warunki włączenia mechanizmu sumienia
-            if (lead.Id == neuron.Id /*&& _currentIteration == Iterations - 1*/ && hitConscience)
+            if (lead.Id == neuron.Id && _currentIteration >= 1 && hitConscience)
             {
-                var wins = ScoreBoard[lead];
+                var wins = ScoreBoard[lead]; // Pobieramy liczbę zwycięstw
 
-                var resultValue = wins * 2;
+                var resultValue = wins * 0.5; // Obliczamy wartość sumienia
                 return resultValue;
             }
             else
             {
                 return 0;
             }
-
         }
 
         private void DisplayScoreBoard()
@@ -124,7 +124,7 @@ namespace Model.NeuralNetwork.Elements
             Console.WriteLine(sb.ToString());
         }
 
-        private Neuron PickLead()
+        private Neuron<V> PickLead()
         {
             return Neurons.First(n => n.Id == ScoreBoard.OrderByDescending(sb => sb.Value).First().Key.Id);
         }

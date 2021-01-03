@@ -1,6 +1,5 @@
 F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\bin\Debug\Model.dll
 F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\bin\Debug\Model.pdb
-F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\obj\Debug\Model.csprojAssemblyReference.cache
 F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\obj\Debug\Model.dll
 F:\C#\AGSSN_NeuralNetwork\AGSSN_NeuralNetwork\Model\obj\Debug\Model.pdb

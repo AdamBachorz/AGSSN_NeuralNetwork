@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork
 {
-    public class WTM : BaseNeuralNetwork
+    public class WTM<V> : BaseNeuralNetwork<V>
     {
         public WTM()
         {

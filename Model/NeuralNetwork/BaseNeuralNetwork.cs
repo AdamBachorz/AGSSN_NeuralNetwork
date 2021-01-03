@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Model.NeuralNetwork
 {
-    public abstract class BaseNeuralNetwork
+    public abstract class BaseNeuralNetwork<V>
     {
-        public IEnumerable<Neuron> Neurons { get; set; }
+        public IEnumerable<Neuron<V>> Neurons { get; set; }
         public double LearningPerformance { get; set; }
         public int Iterations { get; set; }
         public bool DisplayInitialValues { get; set; } = false;
-        public IDictionary<Neuron, int> ScoreBoard { get; protected set; }
 
         public abstract void Run();
     }
